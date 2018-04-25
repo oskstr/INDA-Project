@@ -1,3 +1,4 @@
+![Build status](https://travis-ci.org/oskstr/INDA-Project.svg?branch=master)
 # World of INDA17 - Project Description
 
 **Students:** @oskstr @kittyt
