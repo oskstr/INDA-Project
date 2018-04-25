@@ -10,6 +10,10 @@ World of INDA17 is a reality based game project where the user is a Computer Sci
 The user is supposed to interact with a grapfical interface to complete the weekly tasks (game levels). The game project will
 be implemented by using **JavaFX**. 
 
+#### Classes
+We would first of all need a `Game` class to generate a `Scene`, a window to display objects in, and run until the player decides to exit. We would also need either an interface or abstract class `Drawable` to be able to iterate over all objects in the scene. We would like to, at each time interval, update the state of `Drawable` objects as well as draw/redraw them. 
+
+There would be a few different classes that implements `Drawable`. The different `Drawable` object would probably all store a position and an image, held in a file somewhere. The only NPC in the game currenly planned is Plutten, coming in a couple of different incarnations `BouncingPlutten` that would work a lot like `BoxBall` from assignment 7. `WalkingPlutten` would be patroling a path, going back and forth, making it difficult for the `Player` to avoid *komplettering*.
 
 **Class diagram**
 
@@ -19,7 +23,7 @@ be implemented by using **JavaFX**.
 
 ### General game structure
 #### Start menu:
-The start menu will have two main bottoms, `Start` and `Quit`. The background picture will be a fractal (pallinda, assigment 3).
+The start menu will have two main bottoms, `Start` and `Quit`. The background picture will be a fractal (palinda, assignment 3).
 
 #### User name:
 This display will have a bar where the user can choose an user name. By the user input, the game will generate a Star Wars name
