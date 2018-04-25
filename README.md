@@ -48,4 +48,4 @@ gets a F.
 To be announced.
 
 ## Test strategy
-
+Unittests will be used to test backend methods etc. Run the project multiple times and try to break it to detect bugs.
