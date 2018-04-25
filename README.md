@@ -30,11 +30,11 @@ through the introduction.
 
 #### Level 1, *Single Linked List* (alginda, weekly assignment 14):
 The player is suppose to travel from position A to B by connecting nodes. The difficulty in this level is to connect the nodes 
-in the dark, and not connecting infinity loops. Also be careful of the `plutten` who gives you `komplettering` and do not forget
+in the dark, and not connecting infinite loops. Also be careful of the `plutten` who gives you `komplettering` and do not forget
 the time limit.
 
 #### Level 2, *Bouncing balls and box ball* (prginda, weekly assignment 7):
-The player is placed in a box containing bouncing `plutten`. The task is to not collide with the `plutten`'s, otherwise he will
+The player is placed in a box containing bouncing `plutten`. The task is to not collide with the `plutten`s, otherwise he will
 give the player `komplettering`. If the player do not collide with any `plutten` during the time limit, the task i complete! The 
 number of `plutten` in the box will increase with time. 
 
