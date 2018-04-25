@@ -12,7 +12,7 @@ be implemented by using **JavaFX**.
 
 **Class diagram**
 
-To be announced
+![Class Diagram](/docs/class-diagram.png)
 
 ## Game Description
 
