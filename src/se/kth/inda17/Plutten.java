@@ -2,9 +2,12 @@ package se.kth.inda17;
 
 import javafx.geometry.Point2D;
 
+import java.util.Random;
+
 public class Plutten extends Character {
     private Point2D direction;
     private int speed;
+    private Random random = new Random();
 
     public Plutten(Point2D position) {
         super(position);
@@ -14,7 +17,7 @@ public class Plutten extends Character {
 
     public Plutten() {
         this(new Point2D(0,0));
-        this.setPosition(getRandomPosition());
+        setPosition(getRandomPosition());
     }
 
     public void setDirection(Point2D direction) {
@@ -26,7 +29,8 @@ public class Plutten extends Character {
     }
 
     public void update() {
-        // TODO
+        Point2D position = getPosition();
+        setPosition(position.add(direction.getX()*speed, direction.getY()*speed));
     }
 
     @Override
@@ -36,13 +40,14 @@ public class Plutten extends Character {
     }
 
     private int getRandomSpeed() {
-        // TODO
-        return 1;
+        return random.nextInt(10);
     }
 
     private Point2D getRandomDirection() {
-        // TODO
-        return new Point2D(1,1);
+        int x = random.nextInt(10)-5;
+        int y = random.nextInt(10)-5;
+
+        return new Point2D(x,y);
     }
 
     private Point2D getRandomPosition() {
