@@ -17,5 +17,8 @@ abstract class Character {
         this.position = position;
     }
 
-    public abstract boolean isOutOfBounds(int width, int height);
+    public boolean isOutOfBounds(int width, int height) {
+        return (position.getX() < 0     || position.getY() < 0     ||
+                position.getX() > width || position.getY() > height);
+    }
 }

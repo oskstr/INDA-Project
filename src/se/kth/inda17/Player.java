@@ -1,6 +1,5 @@
 package se.kth.inda17;
 
-
 import javafx.geometry.Point2D;
 
 public class Player extends Character {
@@ -12,22 +11,19 @@ public class Player extends Character {
     }
 
     public void move(Point2D direction) {
-        // TODO
+        Point2D position = getPosition();
+        setPosition(position.add(direction));
     }
 
     public boolean isCollidingWith(Plutten plutten) {
-        // TODO
+        if (getPosition().equals(plutten.getPosition())) {
+            alive = false;
+            return true;
+        }
         return false;
     }
 
     public boolean isDead() {
-        // TODO
-        return false;
-    }
-
-    @Override
-    public boolean isOutOfBounds(int width, int height) {
-        // TODO
-        return false;
+        return !alive;
     }
 }
