@@ -25,20 +25,15 @@ There would be a few different classes that implements `Drawable`. The different
 #### Start menu:
 The start menu will have two main bottoms, `Start` and `Quit`. The background picture will be a fractal (palinda, assignment 3).
 
-#### User name:
+#### (User name:)
 This display will have a bar where the user can choose an user name. By the user input, the game will generate a Star Wars name
 (alginda, weekly assignment 7).
 
-#### Introduction:
+#### (Introduction:)
 *Pythia, the oracle of Delphi* (pallinda, assignment 2) will introduce the background story. The player are supposed to click
 through the introduction.
 
-#### Level 1, *Single Linked List* (alginda, weekly assignment 14):
-The player is suppose to travel from position A to B by connecting nodes. The difficulty in this level is to connect the nodes
-but don't be able to see the connections between nodes. Don't connect infinite loops! You will get stuck... Also be careful of
-the `pluttens` who gives you `komplettering` and do not forget the time limit.
-
-#### Level 2, *Bouncing balls and box ball* (prginda, weekly assignment 7):
+#### *Bouncing balls and box ball* (prginda, weekly assignment 7):
 The player is placed in a box containing bouncing `plutten`. The task is to not collide with the `plutten`s, otherwise he will
 give the player `komplettering`. If the player do not collide with any `plutten` during the time limit, the task i complete! The
 number of `plutten` in the box will increase with time.
