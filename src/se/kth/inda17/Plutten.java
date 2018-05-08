@@ -29,12 +29,6 @@ public class Plutten extends Character {
         // TODO
     }
 
-    @Override
-    public boolean isOutOfBounds(int width, int height) {
-        // TODO
-        return false;
-    }
-
     private int getRandomSpeed() {
         // TODO
         return 1;
