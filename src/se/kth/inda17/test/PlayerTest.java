@@ -16,8 +16,8 @@ public class PlayerTest {
     public void init() {
         int width = 600;
         int height = 600;
-        player = new Player("player.png", new Point2D(10, 10), width, height);
-        plutten = new Plutten("plutten.png", new Point2D(10, 10), width, height);
+        player = new Player(new Point2D(10, 10), width, height);
+        plutten = new Plutten(new Point2D(10, 10), width, height);
     }
 
     @Test

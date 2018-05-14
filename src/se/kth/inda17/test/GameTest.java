@@ -17,7 +17,7 @@ public class GameTest {
 
     @Before
     public void init() {
-        player = new Player("player.png", new Point2D(10,10), width, height);
+        player = new Player(new Point2D(10,10), width, height);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class GameTest {
 
     @Test
     public void testPluttenCollideWithWall() {
-        Plutten plutten = new Plutten("plutten.png", new Point2D(0,0), width, height);
+        Plutten plutten = new Plutten(new Point2D(0,0), width, height);
         plutten.setDirection(new Point2D(-1,0));
         plutten.setSpeed(1);
         plutten.update();
