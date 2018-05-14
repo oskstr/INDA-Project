@@ -2,6 +2,7 @@ package se.kth.inda17;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -94,5 +95,8 @@ public class Game extends Application {
         root.getChildren().add(canvas);
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        Player player = new Player("/image/player.png", new Point2D(WIDTH/2, HEIGHT/2), WIDTH, HEIGHT);
+        player.render(gc);
     }
 }
