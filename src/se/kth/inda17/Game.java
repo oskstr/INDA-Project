@@ -113,7 +113,6 @@ public class Game extends Application {
             pluttens.add(new Plutten(WIDTH, HEIGHT));
         }
 
-
         stage.show();
         new AnimationTimer() {
             @Override
@@ -125,7 +124,14 @@ public class Game extends Application {
                 for (Plutten plutten : pluttens) {
                     plutten.render(gc);
                     plutten.update();
+                    if (player.isCollidingWith(plutten)) {
+                        player.dies();
+                        //stop();
+                    }
                 }
+
+
+
             }
         }.start();
     }
