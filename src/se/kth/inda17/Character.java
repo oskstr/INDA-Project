@@ -59,7 +59,7 @@ abstract class Character {
     }
 
     private Rectangle2D getBoundary() {
-        return new Rectangle2D(position.getX(), position.getY(), image.getWidth(), image.getHeight());
+        return new Rectangle2D(position.getX(), position.getY(), width, height);
     }
 
     public boolean isCollidingWith(Character c) {
