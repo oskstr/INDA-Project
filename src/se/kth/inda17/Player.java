@@ -21,7 +21,11 @@ public class Player extends Character {
         stayInBounds();
     }
 
-    public boolean isDead() {
-        return !alive;
+    public void dies() {
+        alive = false;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 }
