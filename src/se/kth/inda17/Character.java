@@ -2,6 +2,7 @@ package se.kth.inda17;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 abstract class Character {
@@ -28,6 +29,10 @@ abstract class Character {
     public boolean isOutOfBounds() {
         return (position.getX() < 0             || position.getY() < 0               ||
                 position.getX() > boundaryWidth || position.getY() > boundaryHeight);
+    }
+
+    public void render(GraphicsContext gc) {
+        gc.drawImage(image, position.getX(), position.getY());
     }
 
     private Rectangle2D getBoundary() {
