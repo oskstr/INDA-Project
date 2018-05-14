@@ -9,14 +9,14 @@ public class Plutten extends Character {
     private int speed;
     private Random random = new Random();
 
-    public Plutten(Point2D position) {
-        super(position);
+    public Plutten(String image, Point2D position, int boundaryWidth, int boundaryHeight) {
+        super(image, position, boundaryWidth, boundaryHeight);
         speed = getRandomSpeed();
         direction = getRandomDirection();
     }
 
-    public Plutten() {
-        this(new Point2D(0,0));
+    public Plutten(String image, int boundaryWidth, int boundaryHeight) {
+        this(image, new Point2D(0,0), boundaryWidth, boundaryHeight);
         setPosition(getRandomPosition());
     }
 

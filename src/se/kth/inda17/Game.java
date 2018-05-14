@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -46,15 +47,19 @@ public class Game extends Application {
         stage.setTitle("Menu");
         Button startButton = new Button("Start");
         Button quitButton = new Button("Quit");
+        Label title = new Label();
 
         startButton.setOnAction(event -> startBoxBallGame(stage));
         quitButton.setOnAction(event -> stage.close());
 
         StackPane root = new StackPane();
+        root.setId("pane");
         VBox vBox = new VBox(5.0, startButton, quitButton);
         vBox.setAlignment(Pos.CENTER);
         root.getChildren().add(vBox);
-        stage.setScene(new Scene(root, WIDTH, HEIGHT));
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
+        stage.setScene(scene);
         stage.show();
     }
 
