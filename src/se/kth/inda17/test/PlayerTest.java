@@ -10,10 +10,14 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class PlayerTest {
     private Player player;
+    private Plutten plutten;
 
     @Before
     public void init() {
-        player = new Player(new Point2D(10, 10));
+        int width = 600;
+        int height = 600;
+        player = new Player("player.png", new Point2D(10, 10), width, height);
+        plutten = new Plutten("plutten.png", new Point2D(10, 10), width, height);
     }
 
     @Test
@@ -27,13 +31,11 @@ public class PlayerTest {
 
     @Test
     public void testPluttenCollision() {
-        Plutten plutten = new Plutten(new Point2D(10, 10));
         assertThat(player.isCollidingWith(plutten), is(true));
     }
 
     @Test
     public void testPluttenMoves() {
-        Plutten plutten = new Plutten(new Point2D(10, 10));
         Point2D oldPosition = plutten.getPosition();
 
         plutten.setDirection(new Point2D(1,1));
@@ -45,7 +47,6 @@ public class PlayerTest {
 
     @Test
     public void testPlayerDies() {
-        Plutten plutten = new Plutten(new Point2D(10, 10));
         player.isCollidingWith(plutten);
         assertThat(player.isDead(), is(true));
     }
