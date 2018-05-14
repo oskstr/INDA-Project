@@ -112,17 +112,21 @@ public class Game extends Application {
 
         Player player = new Player(new Point2D(WIDTH/2, HEIGHT/2), WIDTH, HEIGHT);
         ArrayList<Plutten> pluttens = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            pluttens.add(new Plutten(WIDTH, HEIGHT));
-        }
+        pluttens.add(new Plutten(WIDTH, HEIGHT));
 
         stage.show();
         new AnimationTimer() {
+            long currentTime = System.nanoTime();
             @Override
             public void handle(long now) {
                 gc.clearRect(0,0,WIDTH,HEIGHT);
                 player.render(gc);
                 player.move(userDirection.vector);
+
+                if (now - currentTime > 5e9) {
+                    pluttens.add(new Plutten(WIDTH, HEIGHT));
+                    currentTime = System.nanoTime();
+                }
 
                 for (Plutten plutten : pluttens) {
                     plutten.render(gc);
@@ -132,8 +136,6 @@ public class Game extends Application {
                         //stop();
                     }
                 }
-
-
 
             }
         }.start();
