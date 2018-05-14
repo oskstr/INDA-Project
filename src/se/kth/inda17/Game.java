@@ -55,14 +55,17 @@ public class Game extends Application {
         stage.setTitle("Menu");
         Button startButton = new Button("Start");
         Button quitButton = new Button("Quit");
-        Label title = new Label();
+        Label title = new Label("Welcome to world of INDA17");
 
         startButton.setOnAction(event -> startBoxBallGame(stage));
         quitButton.setOnAction(event -> stage.close());
+        startButton.setId("startButton");
+        quitButton.setId("quitButton");
+        title.setId("title");
 
         StackPane root = new StackPane();
         root.setId("pane");
-        VBox vBox = new VBox(5.0, startButton, quitButton);
+        VBox vBox = new VBox(5.0, title, startButton, quitButton);
         vBox.setAlignment(Pos.CENTER);
         root.getChildren().add(vBox);
         Scene scene = new Scene(root, WIDTH, HEIGHT);

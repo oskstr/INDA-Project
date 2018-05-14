@@ -1,6 +1,39 @@
 #pane {
-    -fx-background-image: url("../../../../resources/images/background.png");
+    -fx-background-image: url("background.png");
     -fx-background-repeat: stretch;
-    -fx-background-size: 300 275;
+    -fx-background-size: 750 750;
     -fx-background-position: center center;
+}
+
+#startButton {
+    -fx-background-color:
+            linear-gradient(#f0ff35, #a9ff00),
+            radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
+
+#quitButton {
+    -fx-background-color:
+            linear-gradient(#ff5400, #be1d00),
+            radial-gradient(center 50% -40%, radius 200%, #EB3601 45%, #c72407 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #6b1000;
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
+
+#title {
+    -fx-font-size: 30;
+    -fx-font-family: "Courier New";
+    -fx-text-fill: #D2D9E8;
+    -fx-font-weight: bold;
 }
