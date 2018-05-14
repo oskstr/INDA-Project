@@ -1,7 +1,9 @@
 package se.kth.inda17;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -10,13 +12,19 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Game extends Application {
+
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
+
+    private Direction userDirection = Direction.NONE;
 
     /**
      *
@@ -86,13 +94,53 @@ public class Game extends Application {
     }
 
     private void startBoxBallGame(Stage stage) {
+        stage.hide();
         Group root = new Group();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Inda 17 - The Game");
 
         Canvas canvas = new Canvas(WIDTH,HEIGHT);
         root.getChildren().add(canvas);
 
+        handleUserInput(scene);
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        Player player = new Player(new Point2D(WIDTH/2, HEIGHT/2), WIDTH, HEIGHT);
+        ArrayList<Plutten> pluttens = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            pluttens.add(new Plutten(WIDTH, HEIGHT));
+        }
+
+
+        stage.show();
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                gc.clearRect(0,0,WIDTH,HEIGHT);
+                player.render(gc);
+                player.move(userDirection.vector);
+
+                for (Plutten plutten : pluttens) {
+                    plutten.render(gc);
+                    plutten.update();
+                }
+            }
+        }.start();
+    }
+
+    /**
+     * Set the direction of the player using user input.
+     * @param scene
+     */
+    private void handleUserInput(Scene scene) {
+        scene.setOnKeyPressed(event -> {
+            KeyCode key = event.getCode();
+            if (key == KeyCode.LEFT)  userDirection = Direction.LEFT;
+            if (key == KeyCode.RIGHT) userDirection = Direction.RIGHT;
+            if (key == KeyCode.DOWN)  userDirection = Direction.DOWN;
+            if (key == KeyCode.UP)    userDirection = Direction.UP;
+        });
     }
 }

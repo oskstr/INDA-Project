@@ -5,14 +5,20 @@ import javafx.geometry.Point2D;
 public class Player extends Character {
     private boolean alive;
 
-    public Player(String image, Point2D position, int boundaryWidth, int boundaryHeight) {
-        super(image, position, boundaryWidth, boundaryHeight);
+    private static final String image = "/images/player.png";
+    private static int width = 50;
+    private static int height = 50;
+
+    public Player(Point2D position, int boundaryWidth, int boundaryHeight) {
+        super(image, width, height, position, boundaryWidth, boundaryHeight);
         alive = true;
     }
 
     public void move(Point2D direction) {
         Point2D position = getPosition();
-        setPosition(position.add(direction));
+        int speed = 7;
+        setPosition(position.add(direction.multiply(speed)));
+        stayInBounds();
     }
 
     public boolean isDead() {
