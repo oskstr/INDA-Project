@@ -58,6 +58,10 @@ abstract class Character {
         gc.drawImage(image, position.getX(), position.getY(), width, height);
     }
 
+    public void render(GraphicsContext gc) {
+        gc.drawImage(image, position.getX(), position.getY());
+    }
+
     private Rectangle2D getBoundary() {
         return new Rectangle2D(position.getX(), position.getY(), image.getWidth(), image.getHeight());
     }
