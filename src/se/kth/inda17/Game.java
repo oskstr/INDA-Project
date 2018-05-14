@@ -15,7 +15,7 @@ public class Game extends Application {
 
     /**
      *
-     * Start the program.
+     * Start the application.
      *
      * @param stage
      * @throws Exception
@@ -51,5 +51,27 @@ public class Game extends Application {
         root.getChildren().add(vBox);
         stage.setScene(new Scene(root, 300, 275));
         stage.show();
+    }
+
+    /**
+     *
+     * Stop the application.
+     *
+     * @throws Exception
+     */
+    @Override
+    public void stop() throws Exception {
+        // TODO
+    }
+
+    /**
+     *
+     * Create initial JavaFX object, needed in the game.
+     *
+     * @throws Exception
+     */
+    @Override
+    public void init() throws Exception {
+        // TODO
     }
 }
