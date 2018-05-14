@@ -3,8 +3,11 @@ package se.kth.inda17;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -12,7 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-
+    private final int WIDTH = 600;
+    private final int HEIGHT = 600;
 
     /**
      *
@@ -45,7 +49,7 @@ public class Game extends Application {
         Button quitButton = new Button("Quit");
         Label title = new Label();
 
-        // close the application
+        startButton.setOnAction(event -> startBoxBallGame(stage));
         quitButton.setOnAction(event -> stage.close());
 
         StackPane root = new StackPane();
@@ -53,7 +57,7 @@ public class Game extends Application {
         VBox vBox = new VBox(5.0, startButton, quitButton);
         vBox.setAlignment(Pos.CENTER);
         root.getChildren().add(vBox);
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
@@ -78,6 +82,17 @@ public class Game extends Application {
      */
     @Override
     public void init() throws Exception {
-        // TODO
+        // TODO?
+    }
+
+    private void startBoxBallGame(Stage stage) {
+        Group root = new Group();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        Canvas canvas = new Canvas(WIDTH,HEIGHT);
+        root.getChildren().add(canvas);
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
     }
 }
