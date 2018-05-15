@@ -110,7 +110,7 @@ public class Game extends Application {
         stage.show();
         new AnimationTimer() {
             long startTime = System.nanoTime();
-            double speed = 1;
+            double speed = pluttens.get(0).getSpeed();
             int weekNum = 1;
 
             @Override
@@ -123,13 +123,8 @@ public class Game extends Application {
                     startTime = System.nanoTime(); // reset time
                     speed = increasePluttenSpeed(pluttens, speed);
                     weekNum = updateWeek(weekNum, week);
-
-
-                    if (weekNum % 3 == 0) { // increase plutten every 3th level
-                        pluttens.add(new Plutten(WIDTH, HEIGHT));
-                    }
+                    increasePlutten(pluttens, weekNum);
                 }
-
 
                 for (Plutten plutten : pluttens) {
                     plutten.render(gc);
@@ -139,10 +134,7 @@ public class Game extends Application {
                         // komplettering?!
                     }
                 }
-
             }
-
-
         }.start();
     }
 
@@ -166,6 +158,12 @@ public class Game extends Application {
             // end of game
         }
         return weekNum;
+    }
+
+    private void increasePlutten(ArrayList<Plutten> pluttens, int weekNum) {
+        if (weekNum % 3 == 0) { // increase plutten every 3th level
+            pluttens.add(new Plutten(WIDTH, HEIGHT));
+        }
     }
 
     /**
