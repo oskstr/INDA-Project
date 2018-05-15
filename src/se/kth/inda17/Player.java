@@ -16,7 +16,7 @@ public class Player extends Character {
 
     public void move(Point2D direction) {
         Point2D position = getPosition();
-        int speed = 7;
+        int speed = 5;
         setPosition(position.add(direction.multiply(speed)));
         stayInBounds();
     }
