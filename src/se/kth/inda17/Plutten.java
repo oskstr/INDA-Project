@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Plutten extends Character {
     private Point2D direction;
-    private int speed;
+    private double speed;
     private static Random random = new Random();
 
     private static final String IMAGE = "/images/plutten.png";
@@ -16,7 +16,7 @@ public class Plutten extends Character {
 
     public Plutten(Point2D position, int boundaryWidth, int boundaryHeight) {
         super(IMAGE, WIDTH, HEIGHT, position, boundaryWidth, boundaryHeight);
-        speed = getRandomSpeed();
+        speed = 1;
         direction = getRandomDirection();
     }
 
@@ -30,7 +30,7 @@ public class Plutten extends Character {
     }
 
     // remove? just used in tests
-    public void setSpeed(int speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 
@@ -55,15 +55,16 @@ public class Plutten extends Character {
         stayInBounds();
     }
 
-    private int getRandomSpeed() {
-        return random.nextInt(2)+2;
-    }
-
     private Point2D getRandomDirection() {
-        int x = random.nextInt(10)-5;
-        int y = random.nextInt(10)-5;
+        double x = random.nextInt(1000)-500;
+        double y = random.nextInt(1000)-500;
 
-        return new Point2D(x,y);
+        while (x == 0 && y == 0) {
+            x = random.nextInt(1000)-500;
+            y = random.nextInt(1000)-500;
+        }
+
+        return new Point2D(x,y).normalize();
     }
 
     private static Point2D getRandomPosition() {
@@ -71,5 +72,9 @@ public class Plutten extends Character {
         int y = random.nextInt(getBoundaryHeight());
 
         return new Point2D(x,y);
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 }

@@ -85,17 +85,6 @@ public class Game extends Application {
         // TODO
     }
 
-    /**
-     *
-     * Create initial JavaFX object, needed in the game.
-     *
-     * @throws Exception
-     */
-    @Override
-    public void init() throws Exception {
-        // TODO?
-    }
-
     private void startBoxBallGame(Stage stage) {
         stage.hide();
         Group root = new Group();
@@ -103,8 +92,12 @@ public class Game extends Application {
         stage.setScene(scene);
         stage.setTitle("Inda 17 - The Game");
 
+        Label week = new Label("Weekly assignment 1");
+        week.setId("week");
+        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
+
         Canvas canvas = new Canvas(WIDTH,HEIGHT);
-        root.getChildren().add(canvas);
+        root.getChildren().addAll(week, canvas);
 
         handleUserInput(scene);
 
@@ -116,16 +109,21 @@ public class Game extends Application {
 
         stage.show();
         new AnimationTimer() {
-            long currentTime = System.nanoTime();
+            long startTime = System.nanoTime();
+            double speed = pluttens.get(0).getSpeed();
+            int weekNum = 1;
+
             @Override
             public void handle(long now) {
                 gc.clearRect(0,0,WIDTH,HEIGHT);
                 player.render(gc);
                 player.move(userDirection.vector);
 
-                if (now - currentTime > 5e9) {
-                    pluttens.add(new Plutten(WIDTH, HEIGHT));
-                    currentTime = System.nanoTime();
+                if (now - startTime > 5e9) { // 5 seconds
+                    startTime = System.nanoTime(); // reset time
+                    speed = increasePluttenSpeed(pluttens, speed);
+                    weekNum = updateWeek(weekNum, week);
+                    increasePlutten(pluttens, weekNum);
                 }
 
                 for (Plutten plutten : pluttens) {
@@ -133,12 +131,39 @@ public class Game extends Application {
                     plutten.update();
                     if (player.isCollidingWith(plutten)) {
                         player.dies();
-                        //stop();
+                        // komplettering?!
                     }
                 }
-
             }
         }.start();
+    }
+
+    private double increasePluttenSpeed(ArrayList<Plutten> pluttens, double speed) {
+        speed+=0.15;
+        for (Plutten plutten : pluttens) {
+            plutten.setSpeed(speed); // increase speed
+        }
+        return speed;
+    }
+
+    private int updateWeek(int weekNum, Label week) {
+        weekNum++; // increase level
+        week.setText("Weekly assignment " + weekNum);
+
+        if (weekNum == 19 || weekNum == 20) {
+            week.setText("Weekly assignment Quicksort" );
+        }
+        else if (weekNum == 21) {
+            week.setText("Palinda");
+            // end of game
+        }
+        return weekNum;
+    }
+
+    private void increasePlutten(ArrayList<Plutten> pluttens, int weekNum) {
+        if (weekNum % 3 == 0) { // increase plutten every 3th level
+            pluttens.add(new Plutten(WIDTH, HEIGHT));
+        }
     }
 
     /**

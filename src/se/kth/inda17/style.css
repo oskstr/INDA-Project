@@ -37,3 +37,10 @@
     -fx-text-fill: #D2D9E8;
     -fx-font-weight: bold;
 }
+
+#week {
+    -fx-font-size: 20;
+    -fx-font-family: "Courier New";
+    -fx-text-fill: #DD0453;
+    -fx-font-weight: bold;
+}
