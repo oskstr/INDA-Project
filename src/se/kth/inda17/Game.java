@@ -13,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -131,6 +132,8 @@ public class Game extends Application {
                     plutten.update();
                     if (player.isCollidingWith(plutten)) {
                         player.dies();
+                        gameOver(stage, true);
+                        stop();
                         // komplettering?!
                     }
                 }
@@ -164,6 +167,61 @@ public class Game extends Application {
         if (weekNum % 3 == 0) { // increase plutten every 3th level
             pluttens.add(new Plutten(WIDTH, HEIGHT));
         }
+    }
+
+    private void gameOver(Stage gameStage, boolean complete) {
+        Stage stage = new Stage();
+
+        Button menuButton = new Button("Menu");
+        Button quitButton = new Button("Quit");
+        Button omregButton = new Button("Omregistrera");
+
+        menuButton.setOnAction(event -> {
+            stage.close();
+            menu(gameStage);
+        });
+
+        quitButton.setOnAction(event -> {
+            stage.close();
+            gameStage.close();
+        });
+
+        omregButton.setOnAction(event -> {
+            stage.close();
+            startBoxBallGame(gameStage);
+        });
+
+        stage.setOnCloseRequest(event -> {
+            stage.close();
+            menu(gameStage);
+        });
+
+        Label label = new Label();
+
+        VBox vBox = new VBox(5.0, label);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(300);
+        vBox.setPrefHeight(200);
+
+        HBox hBox = new HBox(8.0);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(menuButton, quitButton);
+
+        if (complete) {
+            stage.setTitle("INDA 17 Complete!");
+            label.setText("You passed INDA 17! Congratulations!");
+        } else {
+            stage.setTitle("Game Over");
+            label.setText("You failed!");
+            vBox.getChildren().add(omregButton);
+        }
+
+        vBox.getChildren().add(hBox);
+
+
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
