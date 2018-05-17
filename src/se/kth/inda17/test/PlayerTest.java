@@ -49,7 +49,7 @@ public class PlayerTest {
     @Test
     public void testPlayerDies() {
         player.isCollidingWith(plutten);
-        assertThat(player.isAlive(), is(false));
+        assertThat(player.failed(), is(false));
     }
 
 }
