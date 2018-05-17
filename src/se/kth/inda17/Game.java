@@ -114,7 +114,7 @@ public class Game extends Application {
         grade.setId("grade");
 
         Canvas canvas = new Canvas(WIDTH,HEIGHT);
-        root.getChildren().addAll(week, grade, canvas);
+        root.getChildren().addAll(canvas, week, grade);
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
