@@ -91,6 +91,8 @@ public class Game extends Application {
     }
 
     private void startBoxBallGame(Stage stage) {
+        userDirection = Direction.NONE;
+
         stage.hide();
         Group root = new Group();
         Scene scene = new Scene(root);
