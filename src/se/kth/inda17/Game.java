@@ -2,11 +2,9 @@ package se.kth.inda17;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -32,15 +30,12 @@ public class Game extends Application {
     private Direction userDirection = Direction.NONE;
 
     /**
-     *
      * Start the application.
      *
-     * @param stage
-     * @throws Exception
+     * @param stage The main window
      */
     @Override
-    public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("se.kth.inda17.fxml"));
+    public void start(Stage stage) {
         menu(stage);
     }
 
@@ -50,11 +45,10 @@ public class Game extends Application {
     }
 
     /**
-     *
      * Start menu containing a start and quit button.
      * Click 'start' to start the game and 'quit' to close the window.
      *
-     * @param stage
+     * @param stage The main window
      */
     private void menu(Stage stage) {
         stage.setTitle("Menu");
@@ -80,16 +74,9 @@ public class Game extends Application {
     }
 
     /**
-     *
-     * Stop the application.
-     *
-     * @throws Exception
+     * Starts the BoxBall-game
+     * @param stage The main window
      */
-    @Override
-    public void stop() throws Exception {
-        // TODO
-    }
-
     private void startBoxBallGame(Stage stage) {
         userDirection = Direction.NONE;
 
@@ -153,7 +140,7 @@ public class Game extends Application {
                     plutten.render(gc);
                     plutten.update();
 
-                    if (player.isCollidingWith(plutten) && now - kompletteringTime > 1e9 ) {
+                    if (player.isCollidingWith(plutten) && now - kompletteringTime > 1e9 ) { // 1 second cool-down
                         player.getsKomplettering();
                         grade.setText("Grade: " + player.getGrade());
                         kompletteringTime = now;
@@ -168,6 +155,10 @@ public class Game extends Application {
         }.start();
     }
 
+    /**
+     * Set the color of the background in the game.
+     * @param gc Graphics context of canvas
+     */
     private void paintBackground(GraphicsContext gc) {
         Stop[] stops = new Stop[] { new Stop(0, Color.CYAN), new Stop(1, Color.MAGENTA)};
         gc.setFill(new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops));
@@ -209,6 +200,11 @@ public class Game extends Application {
         }
     }
 
+    /**
+     * Alert box for when the game is over.
+     * @param gameStage The main game window
+     * @param complete If the player has completed the game
+     */
     private void gameOver(Stage gameStage, boolean complete) {
         Stage stage = new Stage();
 
@@ -273,7 +269,7 @@ public class Game extends Application {
 
     /**
      * Set the direction of the player using user input.
-     * @param scene
+     * @param scene The main window
      */
     private void handleUserInput(Scene scene) {
         scene.setOnKeyPressed(event -> {

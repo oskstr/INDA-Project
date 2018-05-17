@@ -2,6 +2,9 @@ package se.kth.inda17;
 
 import javafx.geometry.Point2D;
 
+/**
+ * Define directions as Euclidean vectors in 2D space.
+ */
 public enum Direction {
     RIGHT(new Point2D(1,0)),
     LEFT(new Point2D(-1,0)),

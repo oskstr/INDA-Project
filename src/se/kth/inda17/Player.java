@@ -24,6 +24,10 @@ public class Player extends Character {
         grades.put(5, "F");
     }
 
+    /**
+     * Move at some speed in the direction specified.
+     * @param direction The direction of movement
+     */
     public void move(Point2D direction) {
         Point2D position = getPosition();
         int speed = 5;
@@ -31,6 +35,9 @@ public class Player extends Character {
         stayInBounds();
     }
 
+    /**
+     * Komplettering lowers the grade by one point.
+     */
     void getsKomplettering() {
         if (grade < 5) {
             grade++;
@@ -41,6 +48,10 @@ public class Player extends Character {
         return grades.get(grade);
     }
 
+    /**
+     * If grade corresponds to F, the Player has failed.
+     * @return true if player has two low grade, false otherwise.
+     */
     public boolean failed() {
         return grade == 5;
     }
