@@ -153,5 +153,13 @@ public class Game extends Application {
             if (key == KeyCode.DOWN)  userDirection = Direction.DOWN;
             if (key == KeyCode.UP)    userDirection = Direction.UP;
         });
+
+        scene.setOnKeyReleased(event -> {
+            KeyCode key = event.getCode();
+            if (key == KeyCode.LEFT  && userDirection == Direction.LEFT)  userDirection = Direction.NONE;
+            if (key == KeyCode.RIGHT && userDirection == Direction.RIGHT) userDirection = Direction.NONE;
+            if (key == KeyCode.DOWN  && userDirection == Direction.DOWN)  userDirection = Direction.NONE;
+            if (key == KeyCode.UP    && userDirection == Direction.UP)    userDirection = Direction.NONE;
+        });
     }
 }
