@@ -5,7 +5,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-
+/**
+ * The Character class handles the image, position, width and height of all characters.
+ * It also keeps track of the outer boundaries of the window and keeps the characters
+ * within the allowed limits.
+ */
 abstract class Character {
     private Image image;
     private int width;
@@ -13,6 +17,7 @@ abstract class Character {
 
     private Point2D position;
 
+    // Size of window
     private static int boundaryWidth;
     private static int boundaryHeight;
 
@@ -40,6 +45,9 @@ abstract class Character {
                 position.getX() + width > boundaryWidth || position.getY() + height > boundaryHeight);
     }
 
+    /**
+     * Keeps the character within the allowed bounds.
+     */
     void stayInBounds() {
         if (isOutOfBounds()) {
             double x = position.getX();
@@ -54,6 +62,10 @@ abstract class Character {
         }
     }
 
+    /**
+     * Draws the image on screen at the character's position.
+     * @param gc Graphics context of the canvas to draw on
+     */
     void render(GraphicsContext gc) {
         gc.drawImage(image, position.getX(), position.getY(), width, height);
     }
@@ -62,12 +74,17 @@ abstract class Character {
         return new Rectangle2D(position.getX(), position.getY(), width, height);
     }
 
+    /**
+     * Collision detection between characters
+     * @param c Some other character to detect collisions with.
+     * @return true if colliding, false otherwise
+     */
     public boolean isCollidingWith(Character c) {
         return getBoundary().intersects(c.getBoundary());
     }
 
     private static String getResource(String filename) {
-        return Player.class.getResource(filename).toString();
+        return Character.class.getResource(filename).toString();
     }
 
     static int getBoundaryWidth() {

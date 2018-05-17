@@ -24,22 +24,26 @@ public class Plutten extends Character {
         this(getRandomPosition(), boundaryWidth, boundaryHeight);
     }
 
-    // remove? just used in tests
     public void setDirection(Point2D direction) {
         this.direction = direction;
     }
 
-    // remove? just used in tests
     public void setSpeed(double speed) {
         this.speed = speed;
     }
 
+    /**
+     * Set a new position. Change direction if a wall is hit.
+     */
     public void update() {
         Point2D position = getPosition();
         setPosition(position.add(direction.getX()*speed, direction.getY()*speed));
         if (isOutOfBounds()) flipDirection();
     }
 
+    /**
+     * If player hits a wall, change to the opposite direction in the axis of impact.
+     */
     private void flipDirection() {
         double x = getPosition().getX();
         double y = getPosition().getY();
@@ -55,6 +59,10 @@ public class Plutten extends Character {
         stayInBounds();
     }
 
+    /**
+     * Get a random, normalized Euclidean vector that determine direction
+     * @return vector to represent direction.
+     */
     private Point2D getRandomDirection() {
         double x = random.nextInt(1000)-500;
         double y = random.nextInt(1000)-500;
@@ -67,6 +75,10 @@ public class Plutten extends Character {
         return new Point2D(x,y).normalize();
     }
 
+    /**
+     * Get a random position within the allowed boundaries.
+     * @return
+     */
     private static Point2D getRandomPosition() {
         int x = random.nextInt(getBoundaryWidth());
         int y = random.nextInt(getBoundaryHeight());
@@ -74,7 +86,7 @@ public class Plutten extends Character {
         return new Point2D(x,y);
     }
 
-    public double getSpeed() {
+    double getSpeed() {
         return speed;
     }
 }
