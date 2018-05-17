@@ -51,3 +51,54 @@
     -fx-text-fill: #DD0453;
     -fx-font-weight: bold;
 }
+
+/* Game Over Screen*/
+#gameOverText {
+    -fx-font-size: 14;
+    -fx-font-family: "Courier New";
+    -fx-text-fill: #6B1000;
+    -fx-font-weight: bold;
+}
+
+#gameOver {
+    -fx-background-color: coral;
+}
+
+#menuButton {
+    -fx-background-color:
+            linear-gradient(#f0ff35, #a9ff00),
+            radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+    -fx-font-size: 14;
+}
+
+#quitButtonGameOver {
+    -fx-background-color:
+            linear-gradient(#ff5400, #be1d00),
+            radial-gradient(center 50% -40%, radius 200%, #EB3601 45%, #c72407 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #6b1000;
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+    -fx-font-size: 14;
+}
+
+#omregButton {
+    -fx-background-color:
+            linear-gradient(#DA1390, #DC0012),
+            radial-gradient(center 50% -40%, radius 200%, #DD13C0 45%, #DD0463 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: black;
+    -fx-pref-width: 168;
+    -fx-pref-height: 30;
+    -fx-font-size: 14;
+}
