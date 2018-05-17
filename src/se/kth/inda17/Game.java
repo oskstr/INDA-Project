@@ -92,24 +92,33 @@ public class Game extends Application {
         stage.setScene(scene);
         stage.setTitle("Inda 17 - The Game");
 
-        Label week = new Label("Weekly assignment 1");
-        week.setId("week");
-        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
-
-        Canvas canvas = new Canvas(WIDTH,HEIGHT);
-        root.getChildren().addAll(week, canvas);
-
         handleUserInput(scene);
-
-        GraphicsContext gc = canvas.getGraphicsContext2D();
 
         Player player = new Player(new Point2D(WIDTH/2, HEIGHT/2), WIDTH, HEIGHT);
         ArrayList<Plutten> pluttens = new ArrayList<>();
         pluttens.add(new Plutten(WIDTH, HEIGHT));
 
+        Label week = new Label("Weekly assignment 1");
+        week.setTranslateX(10);
+        week.setTranslateY(10);
+        week.setId("week");
+
+        Label grade = new Label("Grade: " + player.getGrade());
+        grade.setTranslateX(WIDTH-110);
+        grade.setTranslateY(10);
+        grade.setId("grade");
+
+        Canvas canvas = new Canvas(WIDTH,HEIGHT);
+        root.getChildren().addAll(week, grade, canvas);
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         stage.show();
+
         new AnimationTimer() {
             long startTime = System.nanoTime();
+            long kompletteringTime = System.nanoTime();
             double speed = pluttens.get(0).getSpeed();
             int weekNum = 1;
 
@@ -120,21 +129,31 @@ public class Game extends Application {
                 player.move(userDirection.vector);
 
                 if (now - startTime > 5e9) { // 5 seconds
-                    startTime = System.nanoTime(); // reset time
+                    startTime = now; // reset time
                     speed = increasePluttenSpeed(pluttens, speed);
                     weekNum = updateWeek(weekNum, week);
+
                     if (weekNum > 27) {
+                        gameOver(stage, true);
                         stop();
                     }
+
                     increasePlutten(pluttens, weekNum);
                 }
 
                 for (Plutten plutten : pluttens) {
                     plutten.render(gc);
                     plutten.update();
-                    if (player.isCollidingWith(plutten)) {
-                        player.dies();
-                        // komplettering?!
+
+                    if (player.isCollidingWith(plutten) && now - kompletteringTime > 1e9 ) {
+                        player.getsKomplettering();
+                        grade.setText("Grade: " + player.getGrade());
+                        kompletteringTime = now;
+
+                        if (player.failed()) {
+                            gameOver(stage, false);
+                            stop();
+                        }
                     }
                 }
             }
