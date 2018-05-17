@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>se.kth.inda17</OriginalElement>
+  <nodes>
+    <node x="597.0" y="0.0">se.kth.inda17.Game</node>
+    <node x="0.0" y="793.0">se.kth.inda17.Direction</node>
+    <node x="296.0" y="432.0">se.kth.inda17.Plutten</node>
+    <node x="205.0" y="793.0">se.kth.inda17.test</node>
+    <node x="0.0" y="476.0">se.kth.inda17.Player</node>
+    <node x="139.5" y="0.0">se.kth.inda17.Character</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="se.kth.inda17.Player" target="se.kth.inda17.Character">
+      <point x="0.0" y="-114.0" />
+      <point x="138.0" y="407.0" />
+      <point x="210.25" y="407.0" />
+      <point x="-70.75" y="191.0" />
+    </edge>
+    <edge source="se.kth.inda17.Plutten" target="se.kth.inda17.Character">
+      <point x="0.0" y="-158.0" />
+      <point x="424.0" y="407.0" />
+      <point x="351.75" y="407.0" />
+      <point x="70.75" y="191.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="372.57142857142856" y="520.7142857142857" />
+  <SelectedNodes>
+    <node>se.kth.inda17.Character</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
