@@ -123,6 +123,9 @@ public class Game extends Application {
                     startTime = System.nanoTime(); // reset time
                     speed = increasePluttenSpeed(pluttens, speed);
                     weekNum = updateWeek(weekNum, week);
+                    if (weekNum > 27) {
+                        stop();
+                    }
                     increasePlutten(pluttens, weekNum);
                 }
 
@@ -148,14 +151,21 @@ public class Game extends Application {
 
     private int updateWeek(int weekNum, Label week) {
         weekNum++; // increase level
-        week.setText("Weekly assignment " + weekNum);
 
-        if (weekNum == 19 || weekNum == 20) {
+        if (weekNum < 19) {
+            week.setText("Weekly assignment " + weekNum);
+        } else if (weekNum == 19 || weekNum == 20) {
             week.setText("Weekly assignment Quicksort" );
-        }
-        else if (weekNum == 21) {
-            week.setText("Palinda");
-            // end of game
+        } else if (weekNum <= 23) {
+            week.setText("Palinda " + (weekNum - 20) );
+        } else if (weekNum == 24) {
+            week.setText("Projinda Week 1: Plan");
+        } else if (weekNum == 25) {
+            week.setText("Projinda Week 2: Develop");
+        } else if (weekNum == 26) {
+            week.setText("Projinda Week 3: Review");
+        } else if (weekNum == 27) {
+            week.setText("Projinda Week 4: Demo");
         }
         return weekNum;
     }
